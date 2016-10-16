@@ -185,9 +185,14 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
 
     int landingX = (e.getX()/75);
     int landingY = (e.getY()/75);
+    int xMovement = Math.abs((landingX-startX));
+    int yMovement = Math.abs((landingY-startY));
     System.out.println("-------------");
-    System.out.println("X movement: " +landingX);
-    System.out.println("Y movement: " +landingY);
+    System.out.println("The peice being moved is : " +pieceName);
+    System.out.println("X landing position on board: " +landingX);
+    System.out.println("Y landing position on board: " +landingY);
+    System.out.println("X Movement : " +xMovement);
+    System.out.println("Y Movement : " +yMovement);
     System.out.println("-------------");
 		/*
 			The only piece that has been enabled to move is a White Pawn...but we should really have this is a separate
