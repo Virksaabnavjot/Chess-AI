@@ -189,8 +189,10 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
     int yMovement = Math.abs((landingY-startY));
     System.out.println("-------------");
     System.out.println("The peice being moved is : " +pieceName);
+    System.out.println("Starting Coordinates: " +startX+ " , " +startY);
     System.out.println("X landing position on board: " +landingX);
     System.out.println("Y landing position on board: " +landingY);
+    System.out.println("Landing Coordinates - X : " +landingX+ ", Y : " +landingY);
     System.out.println("X Movement : " +xMovement);
     System.out.println("Y Movement : " +yMovement);
     System.out.println("-------------");
