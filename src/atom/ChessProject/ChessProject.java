@@ -141,6 +141,20 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
 		return oponent;
 	}
 
+  private Boolean checkBlackOponent(int newX, int newY){
+    Boolean oponent;
+    Component c1 = chessBoard.findComponentAt(newX, newY);
+    JLabel awaitingPiece = (JLabel)c1;
+    String tmp1 = awaitingPiece.getIcon().toString();
+    if(((tmp1.contains("White")))){
+      oponent = true;
+    }
+    else{
+      oponent = false;
+    }
+    return oponent;
+  }
+
 	/*
 		This method is called when we press the Mouse. So we need to find out what piece we have
 		selected. We may also not have selected a piece!
@@ -207,7 +221,25 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
 			If a Pawn makes it to the top of the other side, the Pawn can turn into any other piece, for
 			demonstration purposes the Pawn here turns into a Queen.
 		*/
-		if(pieceName.equals("WhitePawn")){
+
+    if(pieceName.equals("BlackQueen")){
+     validMove = true;
+
+    }
+
+    else if(pieceName.equals("BlackPawn")){
+      if((startY == 6)&&(startX == landingX)&&(((startY-landingY) == 1)||(startY-landingY)==2)){
+        if(!piecePresent(e.getX(), e.getY())){
+          validMove = true;
+        }
+        else{
+          validMove = false;
+        }
+      }
+    }
+
+
+		else if(pieceName.equals("WhitePawn")){
 			if(startY == 1)
 			{
 				if((startX == (e.getX()/75))&&((((e.getY()/75)-startY)==1)||((e.getY()/75)-startY)==2))
