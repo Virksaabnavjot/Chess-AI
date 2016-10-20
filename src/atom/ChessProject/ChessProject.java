@@ -228,7 +228,17 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
    }
 
    else if(pieceName.contains("Knight")){
-     validMove = true;
+     if(((xMovement == 1)&&(yMovement == 2))||((xMovement == 2)&&(yMovement == 1))){
+       if(!piecePresent(e.getX(), e.getY())){
+         validMove = true;
+       }
+       else{
+         validMove = false;
+       }
+     }
+     else{
+       validMove = false;
+     }
    }
 
    else if(pieceName.equals("BlackPawn")){
