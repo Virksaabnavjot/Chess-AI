@@ -233,7 +233,16 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
          validMove = true;
        }
        else{
-         validMove = false;
+         if(pieceName.contains("White")){
+           if(checkWhiteOponent(e.getX(), e.getY())){
+             validMove = true;
+           }
+         }
+         else{
+           if(checkBlackOponent(e.getX(), e.getY())){
+             validMove = true;
+           }
+         }
        }
      }
      else{
