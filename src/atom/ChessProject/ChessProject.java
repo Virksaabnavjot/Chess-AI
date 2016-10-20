@@ -226,6 +226,11 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
    if(pieceName.equals("BlackQueen")){
      validMove = true;
    }
+
+   else if(pieceName.contains("Knight")){
+     validMove = true;
+   }
+
    else if(pieceName.equals("BlackPawn")){
       if((startY == 6)&&(startX == landingX)&&(((startY-landingY) == 1)||(startY-landingY)==2)){
         if(!piecePresent(e.getX(), e.getY())){
