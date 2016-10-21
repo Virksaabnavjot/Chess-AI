@@ -5,7 +5,7 @@ Chess Project build with java programming language tools used Atom Hackable Edit
 
 This is the Screenshot at the begining and only the white pawn is functional and the rest is to be done from here.
 
-# Implementing Knights Logic
+# Knight's Logic
 Knights moves:
 
 Knight can only move in a L direction(meaning if movement on X-axis(xMovement) == 1, then the movement on Y-axis(yMovement) == 2 (must) and also the other way around.
@@ -13,6 +13,14 @@ Knight can only move in a L direction(meaning if movement on X-axis(xMovement) =
 Also, We need to check the square that we are moving to and make sure that if there is a piece present that its not our own piece.
 
 <img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/19577496/867dd10a-970f-11e6-9051-6f81b2e18b37.png" />
+
+# Bishop's Logic
+Bishop's moves: 
+
+The bishop may move any number of squares on the same colured squares in a diagonal direction until it is prevented from continuing by another piece. It may then capture the opposing piece by landing on the square.
+Bishop can't jump pieces unlike Knight.
+
+<img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/19582764/1c421056-972f-11e6-9b6d-2499a4e210cb.png" />
 
 
 
