@@ -208,10 +208,15 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
     System.out.println("Y Movement : " +yMovement);
     System.out.println("-------------");
 
-    if(pieceName.equals("BlackQueen")){
+    if(pieceName.contains("King")){
       validMove = true;
+      //Logic Comming Soon working on it on paper first.
     }
 
+    else if(pieceName.contains("Queen")){
+      validMove = true;
+    }
+    
     else if(pieceName.contains("Knight")){
       if(((xMovement == 1)&&(yMovement == 2))||((xMovement == 2)&&(yMovement == 1))){
         if(!piecePresent(e.getX(), e.getY())){
