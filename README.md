@@ -30,6 +30,22 @@ Bishop can't jump pieces unlike Knight.
 
 <img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/19582764/1c421056-972f-11e6-9b6d-2499a4e210cb.png" />
 
+# Rook's Logic
+
+<img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/19584167/61aeb5b2-973a-11e6-9545-1e1ffd2aeff9.png" />
+
+# Miscellaneous 
+
+Actual Gameplay Images(Me against the computer)
+
+(The pics are about 2-3 weeks old, game played during research phrase, I won because i loved playing chess when I was 15 years old adn loving this project so far and very excited to finish it and play on my own programmed chess board).
+
+<img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/19584190/97ecef2c-973a-11e6-9308-d76f2a9a0b81.JPG" />
+
+<img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/19584189/97d46a74-973a-11e6-849f-17c5f543c3ac.JPG" />
+
+<img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/19584191/97fe2b5c-973a-11e6-8b90-85fb2c4a8260.JPG" />
+
 
 
 
