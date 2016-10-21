@@ -37,8 +37,8 @@ Rook can either move horizontally or vertically. It can move any number of squar
 
 <img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/19584167/61aeb5b2-973a-11e6-9545-1e1ffd2aeff9.png" />
 
-# Queens Logic
-Quen's moves:
+# Queen's Logic
+Queen's moves:
 
 The	Queen	(most powerful piece) can	move	in	a	horizontal,	vertical	or	diagonal direction	as	long	as	there	are	no	pieces	in the	way.
 
@@ -48,7 +48,7 @@ The	Queen	(most powerful piece) can	move	in	a	horizontal,	vertical	or	diagonal d
 
 Actual Gameplay Images(Me against the computer)
 
-(The pics are about 2-3 weeks old, game played during research phrase, I won because i loved playing chess when I was 15 years old adn loving this project so far and very excited to finish it and play on my own programmed chess board).
+(The pics are about 2-3 weeks old, game played during research phrase, I won because I loved playing chess when I was 15 years old and also loving this project so far and very excited to finish it and play on my own programmed chess board).
 
 <img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/19584190/97ecef2c-973a-11e6-9308-d76f2a9a0b81.JPG" />
 
