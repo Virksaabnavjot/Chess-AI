@@ -8,6 +8,8 @@ This is the Screenshot at the begining and only the white pawn is functional and
 # Understanding Chess Board on Paper
 <img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/19583571/c9b61e84-9735-11e6-8f32-86e5e9bd592f.JPG" />
 
+(Please click the image above to see it in correct orientation).
+
 # Understanding movement and landing of pieces on board 
 <img height="300px" weight="300px" src="https://raw.githubusercontent.com/Virksaabnavjot/ChessProject-Artificial-Intelligence/665050affa50dca7f94542455da5d8bdf547099b/src/atom/ScreenShot/Learning%20Board%20Landing%20and%20Movement.png" />
 
