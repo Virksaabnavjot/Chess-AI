@@ -31,8 +31,18 @@ Bishop can't jump pieces unlike Knight.
 <img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/19582764/1c421056-972f-11e6-9b6d-2499a4e210cb.png" />
 
 # Rook's Logic
+Rook's Moves:
+
+Rook can either move horizontally or vertically. It can move any number of squares but cannot pass through a piece.
 
 <img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/19584167/61aeb5b2-973a-11e6-9545-1e1ffd2aeff9.png" />
+
+# Queens Logic
+Quen's moves:
+
+The	Queen	(most powerful piece) can	move	in	a	horizontal,	vertical	or	diagonal direction	as	long	as	there	are	no	pieces	in the	way.
+
+<img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/19586188/cf81e8d8-974a-11e6-9ef2-4b28f6fab62d.png" />
 
 # Miscellaneous 
 
