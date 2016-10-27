@@ -262,7 +262,71 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
       if(((landingX < 0)||(landingX > 7)) || ((landingY < 0)||(landingY > 7))){
         validMove = false;
       }
-      //the code below allows the queen to move like a bishop
+      /*
+      *The code below adds the logic to the QueenPiece to move like a Rook
+      *Queen can now move horzontially or vertically
+      */
+      else if(((Math.abs(startX-landingX)!=0)&&(Math.abs(startY-landingY)== 0))||((Math.abs(startX-landingX)==0)&&(Math.abs(landingY-startY)!=0))){
+        if(Math.abs(startX-landingX)!=0){
+          if(startX-landingX > 0){
+            for(int i = 0; i < xMovement; i++){
+              if(piecePresent(initialX-(i*75), e.getY())){
+                inTheWay = true;
+                break;
+              }
+              else{
+                inTheWay = false;
+              }
+            }
+          }
+          else{
+            for(int i=0; i < xMovement; i++){
+              if(piecePresent(initialX+(i*75),e.getY())){
+                inTheWay = true;
+                break;
+              }
+              else{
+                inTheWay = false;
+              }
+            }
+          }
+        }
+        else{
+          if(startY-landingY > 0){
+            for(int i=0; i < yMovement; i++){
+              if(piecePresent(e.getX(),initialY-(i*75))){
+                inTheWay = true;
+                break;
+              }
+              else{
+                inTheWay = false;
+              }
+            }
+          }
+          else{
+            for(int i=0; i < yMovement; i++){
+              if(piecePresent(e.getX(),initialY+(i*75))){
+                inTheWay = true;
+                break;
+              }
+              else{
+                inTheWay = false;
+              }
+            }
+          }
+        }
+
+        if(inTheWay){
+          validMove = false;
+        }
+        else{
+          validMove = ensureOnlyEnemyPieceIsKilled(e.getX(), e.getY(), pieceName);
+        }
+      }
+      /*
+      *The code below allows the queen to move like a Bishop
+      *Our Queen can now do valid bishop movement i.e diagonally
+      */
       else{
         if(Math.abs(startX-landingX) == Math.abs(startY-landingY)){
           if((startX-landingX < 0)&&(startY-landingY < 0)){
@@ -300,6 +364,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
             validMove = ensureOnlyEnemyPieceIsKilled(e.getX(), e.getY(), pieceName);
           }
         }
+
         else{
           validMove = false;
         }
