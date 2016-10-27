@@ -162,7 +162,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
   }
   //The method below ensures only the enemy piece is killed and returns a Boolean validMove
   private Boolean ensureOnlyEnemyPieceIsKilled(int newX, int newY, String pieceName){
-    Boolean validMove;
+    Boolean validMove = false;
     System.out.println(pieceName);
     if(piecePresent(newX, newY)){
         if(pieceName.contains("White")){
@@ -312,16 +312,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
           validMove = true;
         }
         else{
-          if(pieceName.contains("White")){
-            if(checkWhiteOponent(e.getX(), e.getY())){
-              validMove = true;
-            }
-          }
-          else{
-            if(checkBlackOponent(e.getX(), e.getY())){
-              validMove = true;
-            }
-          }
+          validMove = ensureOnlyEnemyPieceIsKilled(e.getX(), e.getY(), pieceName);
         }
       }
       else{
@@ -389,27 +380,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
             validMove = false;
           }
           else{
-            if(piecePresent(e.getX(), (e.getY()))){
-              if(pieceName.contains("White")){
-                if(checkWhiteOponent(e.getX(), e.getY())){
-                  validMove = true;
-                }
-                else{
-                  validMove = false;
-                }
-              }
-              else{
-                if(checkBlackOponent(e.getX(), e.getY())){
-                  validMove = true;
-                }
-                else{
-                  validMove = false;
-                }
-              }
-            }
-            else{
-              validMove = true;
-            }
+            validMove = ensureOnlyEnemyPieceIsKilled(e.getX(), e.getY(), pieceName);
           }
         }
         else{
@@ -459,27 +430,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
             validMove = false;
           }
           else{
-            if(piecePresent(e.getX(), e.getY())){
-              if(pieceName.contains("White")){
-                if(checkWhiteOponent(e.getX(), e.getY())){
-                  validMove = true;
-                }
-                else{
-                  validMove = false;
-                }
-              }
-              else{
-                if(checkBlackOponent(e.getX(), e.getY())){
-                  validMove = true;
-                }
-                else{
-                  validMove = false;
-                }
-              }
-            }
-            else{
-              validMove = true;
-            }
+            validMove = ensureOnlyEnemyPieceIsKilled(e.getX(), e.getY(), pieceName);
           }
         }
         else{
