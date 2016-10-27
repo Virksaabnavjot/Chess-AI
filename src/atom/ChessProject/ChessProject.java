@@ -3,6 +3,17 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
+/**
+*Orignal Author: Keith Maycock (Initial Code)
+*Modified by:
+*Name: Navjot Singh Virk
+*Class: BSc. Hons in Computing (4th Year)
+*Stream: Software Development
+*College: National College of Ireland
+*Student Number: x13112406
+*Project Github: https://github.com/Virksaabnavjot/ChessProject-Artificial-Intelligence
+*/
+
 public class ChessProject extends JFrame implements MouseListener, MouseMotionListener {
   JLayeredPane layeredPane;
   JPanel chessBoard;
