@@ -219,6 +219,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
       //the statement below checks if the piece is placed on the board, if not its an invalid move
       if(((landingX < 0)||(landingX > 7)) || ((landingY < 0)||(landingY > 7))){
         validMove = false;
+      }
     }
 
     else if(pieceName.contains("Knight")){
