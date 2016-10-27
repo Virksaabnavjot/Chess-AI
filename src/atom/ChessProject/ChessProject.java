@@ -160,10 +160,9 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
     }
     return oponent;
   }
-
+  //The method below ensures only the enemy piece is killed and returns a Boolean validMove
   private Boolean ensureOnlyEnemyPieceIsKilled(int newX, int newY, String pieceName){
     Boolean validMove;
-    Boolean inTheWay = false;
     System.out.println(pieceName);
     if(piecePresent(newX, newY)){
         if(pieceName.contains("White")){
