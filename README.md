@@ -44,11 +44,15 @@ The	Queen	(most powerful piece) can	move	in	a	horizontal,	vertical	or	diagonal d
 
 <img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/19586188/cf81e8d8-974a-11e6-9ef2-4b28f6fab62d.png" />
 
+Pseudo Code:
+
+<img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/19777776/b059b31a-9c71-11e6-93ed-35fc8ca8d00b.png" />
+
 # Miscellaneous 
 
 Actual Gameplay Images(Me against the computer)
 
-(The pics are about 2-3 weeks old, game played during research phrase, I won because I loved playing chess when I was 15 years old and also loving this project so far and very excited to finish it and play on my own programmed chess board).
+(The pics are about 2-3 weeks old(from the day i started coding), game played during research phrase, I won the game, I loved playing chess since I was 15 years old and also loving this project so far and very excited to finish it and play on my own programmed chess board).
 
 <img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/19584190/97ecef2c-973a-11e6-9308-d76f2a9a0b81.JPG" />
 
