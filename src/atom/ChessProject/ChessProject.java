@@ -161,6 +161,38 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
     return oponent;
   }
 
+  private Boolean ensureOnlyEnemyPieceIsKilled(int newX, int newY, String pieceName){
+    Boolean validMove;
+    Boolean inTheWay = false;
+    System.out.println(pieceName);
+    if(piecePresent(newX, newY)){
+        if(pieceName.contains("White")){
+          if(checkWhiteOponent(newX, newY)){
+            validMove = true;
+            return validMove;
+          }
+          else{
+            validMove = false;
+            return validMove;
+          }
+        }
+        else{
+          if(checkBlackOponent(newX, newY)){
+            validMove = true;
+            return validMove;
+          }
+          else{
+            validMove = false;
+            return validMove;
+          }
+        }
+      }
+    else{
+        validMove = true;
+        return validMove;
+      }
+  }
+
   /*
   This method is called when we press the Mouse. So we need to find out what piece we have
   selected. We may also not have selected a piece!
@@ -266,27 +298,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
             validMove = false;
           }
           else{
-            if(piecePresent(e.getX(), e.getY())){
-              if(pieceName.contains("White")){
-                if(checkWhiteOponent(e.getX(), e.getY())){
-                  validMove = true;
-                }
-                else{
-                  validMove = false;
-                }
-              }
-              else{
-                if(checkBlackOponent(e.getX(), e.getY())){
-                  validMove = true;
-                }
-                else{
-                  validMove = false;
-                }
-              }
-            }
-            else{
-              validMove = true;
-            }
+            validMove = ensureOnlyEnemyPieceIsKilled(e.getX(), e.getY(), pieceName);
           }
         }
         else{
