@@ -442,19 +442,24 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
     //End of Queen Piece
 
     else if(pieceName.contains("Knight")){
-      if(((xMovement == 1)&&(yMovement == 2))||((xMovement == 2)&&(yMovement == 1))){
-        if(!piecePresent(e.getX(), e.getY())){
-          validMove = true;
-        }
-        else{
+      //the statement below checks if the piece is placed on the board, if not its an invalid move
+  		if(((landingX < 0)||(landingX > 7))||((landingY < 0)||landingY > 7)){
+  			validMove = false;
+  		}
+  		else{
+  			if(((landingX == startX+1)&&(landingY == startY+2))||((landingX == startX-1)&&(landingY ==
+  			startY+2))||((landingX == startX+2) && (landingY == startY+1))||((landingX == startX-2) &&(landingY ==
+  			startY+1))||((landingX == startX+1) && (landingY == startY-2))||((landingX == startX-1) &&(landingY ==
+  			startY-2))||((landingX == startX+2) && (landingY == startY-1))||((landingX == startX-2) &&(landingY ==
+  			startY-1))){
           //Checks if the piece in the way is an opponent piece and returns a Boolean
-          validMove = ensureOnlyEnemyPieceCanBeKilled(e.getX(), e.getY(), pieceName);
-        }
-      }
-      else{
-        validMove = false;
-      }
-    }
+  				validMove = ensureOnlyEnemyPieceCanBeKilled(e.getX(), e.getY(), pieceName);
+  			}
+  			else{
+  				validMove = false;
+  			}
+  		}
+  	}
     //End of Knight
 
     else if(pieceName.contains("Rook")){
