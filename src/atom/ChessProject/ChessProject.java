@@ -251,14 +251,29 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
     System.out.println("-------------");
 
     if(pieceName.contains("King")){
+      /**
+      * The King can move any direction 1 square at a time, King can not kill its own piece
+      * So, if we can write the logic what the king cant do, we basically have a
+      * fully functional king.
+      * 1- King has to move i.e (xMovement && yMovement can't be zero(its an invalid move))
+      * and it should be placed on the board
+      * 2- Their, has to be 1 square distance between opponent Kings
+      * 3- Cannot kill its own piece, check for oppenent
+      */
       Boolean inTheWay = false;
       int distance = Math.abs(startX-landingX);
-      //the statement below checks if the king is placed on the board, if not its an invalid move
-      if(((landingX < 0)||(landingX > 7)) || ((landingY < 0)||(landingY > 7))){
+      //One Square at a time also(xMovement && yMovement can't be zero(its an invalid move)
+      if(xMovement > 1 || yMovement > 1 || (xMovement == 0 && yMovement == 0)){
         validMove = false;
       }
       else{
-        validMove = true;
+        //the statement below checks if the piece is placed on the board, if not its an invalid move
+        if(((landingX < 0)||(landingX > 7)) || ((landingY < 0)||(landingY > 7))){
+          validMove = false;
+        }
+        else{
+          validMove = true;
+        }
       }
     }
 
