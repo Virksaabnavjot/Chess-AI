@@ -161,7 +161,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
     return oponent;
   }
   //The method below ensures only the enemy piece is killed and returns a Boolean validMove
-  private Boolean ensureOnlyEnemyPieceIsKilled(int newX, int newY, String pieceName){
+  private Boolean ensureOnlyEnemyPieceCanBeKilled(int newX, int newY, String pieceName){
     Boolean validMove = false;
     System.out.println(pieceName);
     if(piecePresent(newX, newY)){
@@ -320,7 +320,8 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
           validMove = false;
         }
         else{
-          validMove = ensureOnlyEnemyPieceIsKilled(e.getX(), e.getY(), pieceName);
+          //Checks if the piece in the way is an opponent piece and returns a Boolean
+          validMove = ensureOnlyEnemyPieceCanBeKilled(e.getX(), e.getY(), pieceName);
         }
       }
       /*
@@ -361,7 +362,8 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
             validMove = false;
           }
           else{
-            validMove = ensureOnlyEnemyPieceIsKilled(e.getX(), e.getY(), pieceName);
+            //Checks if the piece in the way is an opponent piece and returns a Boolean
+            validMove = ensureOnlyEnemyPieceCanBeKilled(e.getX(), e.getY(), pieceName);
           }
         }
 
@@ -377,7 +379,8 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
           validMove = true;
         }
         else{
-          validMove = ensureOnlyEnemyPieceIsKilled(e.getX(), e.getY(), pieceName);
+          //Checks if the piece in the way is an opponent piece and returns a Boolean
+          validMove = ensureOnlyEnemyPieceCanBeKilled(e.getX(), e.getY(), pieceName);
         }
       }
       else{
@@ -445,7 +448,8 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
             validMove = false;
           }
           else{
-            validMove = ensureOnlyEnemyPieceIsKilled(e.getX(), e.getY(), pieceName);
+            //Checks if the piece in the way is an opponent piece and returns a Boolean
+            validMove = ensureOnlyEnemyPieceCanBeKilled(e.getX(), e.getY(), pieceName);
           }
         }
         else{
@@ -495,7 +499,8 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
             validMove = false;
           }
           else{
-            validMove = ensureOnlyEnemyPieceIsKilled(e.getX(), e.getY(), pieceName);
+            //Checks if the piece in the way is an opponent piece and returns a Boolean
+            validMove = ensureOnlyEnemyPieceCanBeKilled(e.getX(), e.getY(), pieceName);
           }
         }
         else{
