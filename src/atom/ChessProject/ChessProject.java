@@ -290,6 +290,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
         }
       }
     }
+    //End of King Piece
 
     else if(pieceName.contains("Queen")){
       Boolean inTheWay = false;
@@ -408,6 +409,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
         }
       }
     }
+    //End of Queen Piece
 
     else if(pieceName.contains("Knight")){
       if(((xMovement == 1)&&(yMovement == 2))||((xMovement == 2)&&(yMovement == 1))){
@@ -423,6 +425,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
         validMove = false;
       }
     }
+    //End of Knight
 
     else if(pieceName.contains("Rook")){
       Boolean inTheWay = false;
@@ -493,6 +496,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
         }
       }
     }
+    //End of Rook
 
     else if(pieceName.contains("Bishop")){
       Boolean inTheWay = false;
@@ -544,6 +548,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
         }
       }
     }
+    //End of Bishop
 
     else if(pieceName.equals("BlackPawn")){
       if((startY == 6)&&(startX == landingX)&&(((startY-landingY) == 1)||(startY-landingY)==2)){
@@ -585,26 +590,35 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
         validMove = false;
       }
     }
+    //End of Black Pawn
+
     else if(pieceName.equals("WhitePawn")){
-      if(startY == 1)
-      {
-        if((startX == (e.getX()/75))&&((((e.getY()/75)-startY)==1)||((e.getY()/75)-startY)==2))
-        {
-          if((((e.getY()/75)-startY)==2)){
-            if((!piecePresent(e.getX(), (e.getY())))&&(!piecePresent(e.getX(), (e.getY()+75)))){
-              validMove = true;
-            }
-            else{
-              validMove = false;
+      if((startY == 1)&&(startX == landingX)&&(((landingY - startY) == 1) || (landingY - startY) == 2)){
+        if((!piecePresent(e.getX(), e.getY())&&(!piecePresent(e.getX(), e.getY()-75)))){
+          validMove = true;
+        }
+      }
+      else if((Math.abs(landingX - startX) == 1)&&(((landingY - startY) == 1))){
+        if (piecePresent(e.getX(), e.getY())) {
+          if(checkWhiteOponent(e.getX(), e.getY())){
+            validMove = true;
+            if(landingY == 7){
+              success = true;
             }
           }
           else{
-            if((!piecePresent(e.getX(), (e.getY())))){
-              validMove = true;
-            }
-            else{
-              validMove = false;
-            }
+            validMove = false;
+          }
+        }
+        else{
+          validMove = false;
+        }
+      }
+      else if((startY != 1)&&((startX == landingX)&&(((landingY - startY) == 1)))){
+        if(!piecePresent(e.getX(), e.getY())){
+          validMove = true;
+          if(landingY == 7){
+            success = true;
           }
         }
         else{
@@ -612,43 +626,11 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
         }
       }
       else{
-        int newY = e.getY()/75;
-        int newX = e.getX()/75;
-        if((startX-1 >= 0)||(startX +1 <=7)){
-          if((piecePresent(e.getX(), (e.getY())))&&((((newX == (startX+1)&&(startX+1<=7)))||((newX == (startX-1))&&(startX-1 >=0)))))
-          {
-            if(checkWhiteOponent(e.getX(), e.getY())){
-              validMove = true;
-              if(startY == 6){
-                success = true;
-              }
-            }
-            else{
-              validMove = false;
-            }
-          }
-          else{
-            if(!piecePresent(e.getX(), (e.getY()))){
-              if((startX == (e.getX()/75))&&((e.getY()/75)-startY)==1){
-                if(startY == 6){
-                  success = true;
-                }
-                validMove = true;
-              }
-              else{
-                validMove = false;
-              }
-            }
-            else{
-              validMove = false;
-            }
-          }
-        }
-        else{
-          validMove = false;
-        }
+        validMove = false;
       }
     }
+    //End of White Pawn
+
     if(!validMove){
       int location=0;
       if(startY ==0){
