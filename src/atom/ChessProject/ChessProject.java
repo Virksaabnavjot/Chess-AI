@@ -200,6 +200,34 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
       }
   }
 
+  private String pName(int newX, int newY){
+    Component c = chessBoard.findComponentAt(newX, newY);
+    if(c instanceof JLabel){
+      JLabel awaitingPiece = (JLabel) c;
+      String tmp1 = awaitingPiece.getIcon().toString();
+      return tmp1;
+    }
+    else{
+      return "";
+    }
+  }
+
+  private Boolean underKingsRadar(int newX, int newY){
+    if((piecePresent(newX, newY+75)&& pName(newX, newY+75).contains("King")||(piecePresent(newX, newY-75)&& pName(newX, newY-75).contains("King")))){
+      return  true;
+    }
+    else if((piecePresent(newX+75,newY)&& pName(newX+75, newY).contains("King")||(piecePresent(newX-75, newY)&& pName(newX-75, newY).contains("King")))){
+      return true;
+    }
+    else if((piecePresent(newX-75, newY+75)&& pName(newX-75, newY+75).contains("King")||(piecePresent(newX+75, newY-75)&& pName(newX+75, newY-75).contains("King")))){
+      return  true;
+    }
+    else if((piecePresent(newX-75, newY-75)&& pName(newX-75, newY-75).contains("King")||(piecePresent(newX+75, newY+75)&& pName(newX+75, newY+75).contains("King")))){
+      return  true;
+    }
+    return false;
+  }
+
   /*
   This method is called when we press the Mouse. So we need to find out what piece we have
   selected. We may also not have selected a piece!
@@ -280,12 +308,14 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
           validMove = false;
         }
         else{
-          //Their, has to be 1 square distance between opponent Kings ...Comming soon
-          if(inTheWay){
-                  validMove = false;
-          }
-          else{
-            validMove = ensureOnlyEnemyPieceCanBeKilled(e.getX(), e.getY(), pieceName);
+          //Their, has to be 1 square distance between opponent Kings
+          if(!(underKingsRadar(e.getX(), e.getY()))){
+            if(!piecePresent(e.getX(), e.getY())){
+              validMove = true;
+            }
+            else{
+              validMove = ensureOnlyEnemyPieceCanBeKilled(e.getX(), e.getY(), pieceName);
+            }
           }
         }
       }
