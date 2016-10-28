@@ -339,6 +339,8 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
     //End of King Piece
 
     else if(pieceName.contains("Queen")){
+      //Queen's moves: Compound of Rook and Bishop
+      //The Queen can move in a horizontal, vertical or diagonal direction as long as there are no pieces in the way.
       Boolean inTheWay = false;
       int distance = Math.abs(startX-landingX);
       //the statement below checks if the piece is placed on the board, if not its an invalid move
@@ -458,6 +460,14 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
     //End of Queen Piece
 
     else if(pieceName.contains("Knight")){
+      /*
+      *Knights moves:
+      *Knight can only move in a L direction(meaning if movement on X-axis(xMovement) == 1,
+      *then the movement on Y-axis(yMovement) == 2 (must) and also the other way around.
+      *Also, We need to check the square that we are moving to and make sure that if
+      *there is a piece present that its not our own piece.
+      */
+      
       //the statement below checks if the piece is placed on the board, if not its an invalid move
   		if(((landingX < 0)||(landingX > 7))||((landingY < 0)||landingY > 7)){
   			validMove = false;
@@ -479,6 +489,9 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
     //End of Knight
 
     else if(pieceName.contains("Rook")){
+      //Rook's Moves:
+      //Rook can either move horizontally or vertically.
+      //It can move any number of squares but cannot pass/jump through a piece.
       Boolean inTheWay = false;
       if(((landingX < 0)||(landingX > 7)) || ((landingY < 0)||(landingY > 7))){
         validMove = false;
@@ -550,6 +563,13 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
     //End of Rook
 
     else if(pieceName.contains("Bishop")){
+      /*
+      *Bishop's moves:
+      *The bishop may move any number of squares on the same colured squares in a diagonal direction
+      *until it is prevented from continuing by another piece.
+      *It may then capture the opposing piece by landing on the square.
+      *Bishop can't jump pieces unlike Knight.
+      */
       Boolean inTheWay = false;
       int distance = Math.abs(startX-landingX);
       //the statement below checks if the piece is placed on the board, if not its an invalid move
