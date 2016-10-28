@@ -26,6 +26,8 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
   int initialY;
   JPanel panels;
   JLabel pieces;
+  Boolean whitePieceMoveFirst;
+  Boolean possible;
 
 
   public ChessProject(){
@@ -115,6 +117,8 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
     pieces = new JLabel( new ImageIcon("BlackRook.png") );
     panels = (JPanel)chessBoard.getComponent(63);
     panels.add(pieces);
+    possible = false;
+    whitePieceMoveFirst = false;
   }
 
   /*
@@ -285,6 +289,17 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
     System.out.println("X Movement : " +xMovement);
     System.out.println("Y Movement : " +yMovement);
     System.out.println("-------------");
+
+    if(whitePieceMoveFirst){
+  		if(pieceName.contains("White")){
+  			possible = true;
+  		}
+  	}
+  	else{
+  		if(pieceName.contains("Black")){
+  			possible = true;
+  		}
+  	}
 
     if(pieceName.contains("King")){
       /**
