@@ -10,6 +10,9 @@ This is the Screenshot at the begining and only the white pawn is functional and
 
 (Please click the image above to see it in correct orientation).
 
+# x,y on Chess board (Horizontal and Vertical)
+<img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/20179140/9a180eae-a74c-11e6-9c32-20ca346a031d.png" />
+
 # Understanding movement and landing of pieces on board 
 <img height="300px" weight="300px" src="https://raw.githubusercontent.com/Virksaabnavjot/ChessProject-Artificial-Intelligence/665050affa50dca7f94542455da5d8bdf547099b/src/atom/ScreenShot/Learning%20Board%20Landing%20and%20Movement.png" />
 
