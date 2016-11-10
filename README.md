@@ -85,6 +85,26 @@ int startX;
 int startY;
 ```
 
+* Booleans - possible: doesn't allow piece movement until other color piece has moved , whitePieceMoveFirst: return true initially and allow the white piece to move first to start the game, once the white piece is moved the black piece can move and so on. 
+
+```java
+Boolean whitePieceMoveFirst;
+Boolean possible;
+
+if(whitePieceMoveFirst){
+  		if(pieceName.contains("White")){
+  			possible = true;
+  		}
+  	}
+  	else{
+  		if(pieceName.contains("Black")){
+  			possible = true;
+  		}
+  	}
+```
+
+
+
 # Miscellaneous 
 
 Actual Gameplay Images(Me against the computer)
