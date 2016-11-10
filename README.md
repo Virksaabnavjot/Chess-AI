@@ -62,6 +62,13 @@ Pseudo Code:
 
 <img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/20179875/ffecfba6-a74f-11e6-8f5c-bf913eb1548d.png" />
 
+# Helpful Code Explanations
+
+```
+int distance = Math.abs(startX-landingX);
+```
+Math.abs() method gives the absolute value of the argument (Absolute Value: the magnitude of a real number without regard to its sign) Source: https://www.tutorialspoint.com/java/number_abs.htm
+
 
 # Miscellaneous 
 
