@@ -94,6 +94,7 @@ if(whitePieceMoveFirst){
 ```
 
 * ensureOnlyEnemyPieceCanBeKilled() method
+
 Usage: 
 ```java
 validMove = ensureOnlyEnemyPieceCanBeKilled(e.getX(), e.getY(), pieceName);
