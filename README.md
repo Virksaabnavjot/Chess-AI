@@ -64,20 +64,26 @@ Pseudo Code:
 
 # Helpful Code Explanations
 
-Variables initialX,initialY Stores initial position of piece on the board
+* Variables initialX,initialY Stores initial position of piece on the board
 
 ```java 
 int initialX; // Initial position of the piece on x-axis of the board at the start of the game
 int initialY; // Initial position of the piece on y-axis of the board at the start of the game.
 ```
 
-Math.abs() method gives the absolute value of the argument (Absolute Value: the magnitude of a real number without regard to its sign) Source: https://www.tutorialspoint.com/java/number_abs.htm
+* Math.abs() method gives the absolute value of the argument (Absolute Value: the magnitude of a real number without regard to its sign) Source: https://www.tutorialspoint.com/java/number_abs.htm
 
 ```java
 int distance = Math.abs(startX-landingX);
 ```
 <img src="https://cloud.githubusercontent.com/assets/5924811/20180287/c5f7cad2-a751-11e6-8ca7-f0cb2190442d.png" />
 
+* startX, startY stores the starting x,y position of the piece before it landed
+
+```java
+int startX;
+int startY;
+```
 
 # Miscellaneous 
 
