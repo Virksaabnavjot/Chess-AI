@@ -65,28 +65,18 @@ Pseudo Code:
 # Helpful Code Explanations
 
 * Variables initialX,initialY Stores initial position of piece on the board
-
 ```java 
 int initialX; // Initial position of the piece on x-axis of the board at the start of the game
 int initialY; // Initial position of the piece on y-axis of the board at the start of the game.
 ```
 
-* Math.abs() method gives the absolute value of the argument (Absolute Value: the magnitude of a real number without regard to its sign) Source: https://www.tutorialspoint.com/java/number_abs.htm
-
-```java
-int distance = Math.abs(startX-landingX);
-```
-<img src="https://cloud.githubusercontent.com/assets/5924811/20180287/c5f7cad2-a751-11e6-8ca7-f0cb2190442d.png" />
-
 * startX, startY stores the starting x,y position of the piece before it landed
-
 ```java
 int startX;
 int startY;
 ```
 
 * Booleans - possible: doesn't allow piece movement until other color piece has moved , whitePieceMoveFirst: return true initially and allow the white piece to move first to start the game, once the white piece is moved the black piece can move and so on. 
-
 ```java
 Boolean whitePieceMoveFirst;
 Boolean possible;
@@ -103,6 +93,52 @@ if(whitePieceMoveFirst){
   	}
 ```
 
+* ensureOnlyEnemyPieceCanBeKilled() method
+Usage: 
+```java
+validMove = ensureOnlyEnemyPieceCanBeKilled(e.getX(), e.getY(), pieceName);
+// Method returns a boolean true or false 
+// It returns true if the piece to be killed is opponent piece and false if its own piece.
+```
+Implematation:
+```java
+private Boolean ensureOnlyEnemyPieceCanBeKilled(int newX, int newY, String pieceName){
+    Boolean validMove = false;
+    System.out.println(pieceName);
+    if(piecePresent(newX, newY)){
+        if(pieceName.contains("White")){
+          if(checkWhiteOponent(newX, newY)){
+            validMove = true;
+            return validMove;
+          }
+          else{
+            validMove = false;
+            return validMove;
+          }
+        }
+        else{
+          if(checkBlackOponent(newX, newY)){
+            validMove = true;
+            return validMove;
+          }
+          else{
+            validMove = false;
+            return validMove;
+          }
+        }
+      }
+    else{
+      validMove = true;
+      return validMove;
+      }
+  }
+```
+
+* Math.abs() method gives the absolute value of the argument (Absolute Value: the magnitude of a real number without regard to its sign) Source: https://www.tutorialspoint.com/java/number_abs.htm
+```java
+int distance = Math.abs(startX-landingX);
+```
+<img src="https://cloud.githubusercontent.com/assets/5924811/20180287/c5f7cad2-a751-11e6-8ca7-f0cb2190442d.png" />
 
 
 # Miscellaneous 
