@@ -51,6 +51,18 @@ Pseudo Code:
 
 <img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/19777776/b059b31a-9c71-11e6-93ed-35fc8ca8d00b.png" />
 
+# King's Logic
+King's Moves:
+
+The King can move any direction 1 square at a time it can be horizontal, vertical or diagonal, the king cannot jump over pieces & cannot kills its own pieces and their must be 1 square distance between the opposing Kings else its an invalid move.
+
+<img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/20179613/f49fe43a-a74e-11e6-9b3a-fc5a152e8805.png" />
+
+Pseudo Code:
+
+<img height="300px" weight="300px" src="https://cloud.githubusercontent.com/assets/5924811/20179875/ffecfba6-a74f-11e6-8f5c-bf913eb1548d.png" />
+
+
 # Miscellaneous 
 
 Actual Gameplay Images(Me against the computer)
