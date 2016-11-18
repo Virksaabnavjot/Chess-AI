@@ -20,7 +20,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
   JLabel chessPiece;
   int xAdjustment;
   int yAdjustment;
-  int startX;
+  int startX; //The x coordinate the piece started from.
   int startY;
   int initialX;
   int initialY;
@@ -291,12 +291,12 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
     System.out.println("-------------");
 
     if(whitePieceMoveFirst){
-  		if(pieceName.contains("White")){
+  		if(pieceName.contains("White") && !(xMovement == 0 && yMovement == 0)){
   			possible = true;
   		}
   	}
   	else{
-  		if(pieceName.contains("Black")){
+  		if(pieceName.contains("Black") && !(xMovement == 0 && yMovement == 0)){
   			possible = true;
   		}
   	}
@@ -304,7 +304,8 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
     if(possible){
     if(pieceName.contains("King")){
       /**
-      * The King can move any direction 1 square at a time, King can not kill its own piece
+      * The King can move any direction 1 square at a time and cannot jump a piece,
+      * King can not kill its own piece.
       * So, if we can write the logic what the king cant do, we basically have a
       * fully functional king.
       * 1- King has to move i.e (xMovement && yMovement can't be zero(its an invalid move))
@@ -467,7 +468,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
       *Also, We need to check the square that we are moving to and make sure that if
       *there is a piece present that its not our own piece.
       */
-      
+
       //the statement below checks if the piece is placed on the board, if not its an invalid move
   		if(((landingX < 0)||(landingX > 7))||((landingY < 0)||landingY > 7)){
   			validMove = false;
@@ -493,6 +494,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
       //Rook can either move horizontally or vertically.
       //It can move any number of squares but cannot pass/jump through a piece.
       Boolean inTheWay = false;
+      //Statement below cheks if the piece is placed on the board else its an invalid move.
       if(((landingX < 0)||(landingX > 7)) || ((landingY < 0)||(landingY > 7))){
         validMove = false;
       }
@@ -551,7 +553,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
             validMove = false;
           }
           else{
-            //Checks if the piece in the way is an opponent piece and returns a Boolean
+            //Checks if the piece in the way is an opponent piece and returns a Boolean true or false.
             validMove = ensureOnlyEnemyPieceCanBeKilled(e.getX(), e.getY(), pieceName);
           }
         }
