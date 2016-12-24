@@ -149,6 +149,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
         //valid moves
         Move vMove, vMove1, vMove2, vMove3;
 
+        //temporary x1,x2 and y1,y2
         int tmpx1 = x + 1;
         int tmpx2 = x - 1;
         int tmpy1 = y + 1;

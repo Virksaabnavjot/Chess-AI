@@ -25,19 +25,19 @@ public class AIAgent {
     }
 
     public Move nextBestMove(Stack whiteStack, Stack blackStack) {
-        Stack backup = (Stack) whiteStack.clone();
-        Stack black = (Stack) blackStack.clone();
+        Stack backupMove = (Stack) whiteStack.clone();
+        Stack blackStackM = (Stack) blackStack.clone();
         Move whiteMove, currentMove, bestMove;
         Square blackPosition;
-        int score = 0;
         int highestScore = 0;
         bestMove = null;
+        int score = 0;
 
         while (!whiteStack.empty()) {
             whiteMove = (Move) whiteStack.pop();
             currentMove = whiteMove;
 
-            //check if centre is available
+            //check if the centre of the board is occupied or not
             if ((currentMove.getStart().getYC() < currentMove.getLanding().getYC())
                     && (currentMove.getLanding().getXC() == 3) && (currentMove.getLanding().getYC() == 3)
                     || (currentMove.getLanding().getXC() == 4) && (currentMove.getLanding().getYC() == 3)
@@ -52,9 +52,9 @@ public class AIAgent {
             }
 
             //compare white landing positions to black positions, return capture if available or random if not.
-            while (!black.isEmpty()) {
+            while (!blackStackM.isEmpty()) {
                 score = 0;
-                blackPosition = (Square) black.pop();
+                blackPosition = (Square) blackStackM.pop();
                 if ((currentMove.getLanding().getXC() == blackPosition.getXC()) && (currentMove.getLanding().getYC() == blackPosition.getYC())) {
                     //check piece score
 
@@ -74,21 +74,21 @@ public class AIAgent {
                         score = 6;
                     }
                 }
-                //update bestmove
+                //updating the best move
                 if (score > highestScore) {
                     highestScore = score;
                     bestMove = currentMove;
                 }
             }
-            //reload black squares
-            black = (Stack) blackStack.clone();
+            //reloading the black squares
+            blackStackM = (Stack) blackStack.clone();
         }
-        // use best move if available or just go random
+        // Make the best move if not available make a random move.
         if (highestScore > 0) {
-            System.out.println("Agent selected next best move.");
+            System.out.println("selected AI Agent: Next best move");
             return bestMove;
         }
-        return randomMove(backup);
+        return randomMove(backupMove);
 
     }
 
