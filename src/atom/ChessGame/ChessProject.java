@@ -64,9 +64,9 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
 
             int row = (i / 8) % 2;
             if (row == 0)
-                square.setBackground( i % 2 == 0 ? Color.white : Color.gray );
+                square.setBackground( i % 2 == 0 ? Color.gray : Color.orange );
             else
-                square.setBackground( i % 2 == 0 ? Color.gray : Color.white );
+                square.setBackground( i % 2 == 0 ? Color.orange : Color.gray );
         }
 
         // Setting up the Initial Chess board.
