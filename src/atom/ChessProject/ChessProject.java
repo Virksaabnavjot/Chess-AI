@@ -12,6 +12,8 @@ import javax.swing.*;
 *College: National College of Ireland
 *Student Number: x13112406
 *Project Github: https://github.com/Virksaabnavjot/ChessProject-Artificial-Intelligence
+*
+*PART 2 OF THE PROJECT (DESIGNING AND BUILDING INTELLIGENT SOFTWARE AGENT)
 */
 
 public class ChessProject extends JFrame implements MouseListener, MouseMotionListener {
