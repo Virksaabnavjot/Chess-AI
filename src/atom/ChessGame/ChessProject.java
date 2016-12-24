@@ -143,62 +143,65 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
   method).
      */
     private Stack getWhitePawnSquares(int x, int y, String piece) {
-        Square startingSquare = new Square(x, y, piece);
         Stack moves = new Stack();
-        Move validM, validM1, validM2, validM3;
+        Square initialSquare = new Square(x, y, piece);
+
+        //valid moves
+        Move vMove, vMove1, vMove2, vMove3;
+
         int tmpx1 = x + 1;
         int tmpx2 = x - 1;
         int tmpy1 = y + 1;
         int tmpy2 = y + 2;
 
-        //possible moves for pawn
-        Square tmp = new Square(x, tmpy1, piece); //down one
-        Square tmp1 = new Square(tmpx1, tmpy1, piece); //right + down one
-        Square tmp2 = new Square(tmpx2, tmpy1, piece); //left + down one
-        Square tmp3 = new Square(x, tmpy2, piece); //down two
+        //all the possible moves for the pawn
+        Square tmpSquare = new Square(x, tmpy1, piece); //down one
+        Square tmpSquare1 = new Square(tmpx1, tmpy1, piece); //right + down one
+        Square tmpSquare2 = new Square(tmpx2, tmpy1, piece); //left + down one
+        Square tmpSquare3 = new Square(x, tmpy2, piece); //down two
 
         if (y == 1) {
-            validM1 = new Move(startingSquare, tmp3);
-            if (!piecePresent(((tmp3.getXC() * 75) + 20), (((tmp3.getYC() * 75) + 20))) && !piecePresent(((tmp.getXC() * 75) + 20), (((tmp.getYC() * 75) + 20)))) {
-                moves.push(validM1);
+            vMove1 = new Move(initialSquare, tmpSquare3);
+            if (!piecePresent(((tmpSquare3.getXC() * 75) + 20), (((tmpSquare3.getYC() * 75) + 20))) && !piecePresent(((tmpSquare.getXC() * 75) + 20), (((tmpSquare.getYC() * 75) + 20)))) {
+                moves.push(vMove1);
             } else {
                 if (!(tmpx1 > 7)) {
-                    if (piecePresent(((tmp1.getXC() * 75) + 20), (((tmp1.getYC() * 75) + 20)))) {
-                        if (checkWhiteOponent(((tmp1.getXC() * 75) + 20), (((tmp1.getYC() * 75) + 20)))) {
-                            moves.push(validM1);
+                    if (piecePresent(((tmpSquare1.getXC() * 75) + 20), (((tmpSquare1.getYC() * 75) + 20)))) {
+                        if (checkWhiteOponent(((tmpSquare1.getXC() * 75) + 20), (((tmpSquare1.getYC() * 75) + 20)))) {
+                            moves.push(vMove1);
                         }
                     }
                 }
 
                 if (!(tmpx2 < 0)) {
-                    if (piecePresent(((tmp2.getXC() * 75) + 20), (((tmp2.getYC() * 75) + 20)))) {
-                        if (checkWhiteOponent(((tmp2.getXC() * 75) + 20), (((tmp2.getYC() * 75) + 20)))) {
-                            moves.push(validM1);
+                    if (piecePresent(((tmpSquare2.getXC() * 75) + 20), (((tmpSquare2.getYC() * 75) + 20)))) {
+                        if (checkWhiteOponent(((tmpSquare2.getXC() * 75) + 20), (((tmpSquare2.getYC() * 75) + 20)))) {
+                            moves.push(vMove1);
                         }
                     }
                 }
             }
         }
         if (!(tmpy1 > 7)) {
-            validM = new Move(startingSquare, tmp);
-            if (!piecePresent(((tmp.getXC() * 75) + 20), (((tmp.getYC() * 75) + 20)))) {
-                moves.push(validM);
+            vMove = new Move(initialSquare, tmpSquare);
+            if (!piecePresent(((tmpSquare.getXC() * 75) + 20), (((tmpSquare.getYC() * 75) + 20)))) {
+                moves.push(vMove);
             }
 
             if (!(tmpx1 > 7)) {
-                validM2 = new Move(startingSquare, tmp1);
-                if (piecePresent(((tmp1.getXC() * 75) + 20), (((tmp1.getYC() * 75) + 20)))) {
-                    if (checkWhiteOponent(((tmp1.getXC() * 75) + 20), (((tmp1.getYC() * 75) + 20)))) {
-                        moves.push(validM2);
+                vMove2 = new Move(initialSquare, tmpSquare1);
+                if (piecePresent(((tmpSquare1.getXC() * 75) + 20), (((tmpSquare1.getYC() * 75) + 20)))) {
+                    if (checkWhiteOponent(((tmpSquare1.getXC() * 75) + 20), (((tmpSquare1.getYC() * 75) + 20)))) {
+                        moves.push(vMove2);
                     }
                 }
             }
 
             if (!(tmpx2 < 0)) {
-                validM3 = new Move(startingSquare, tmp2);
-                if (piecePresent(((tmp2.getXC() * 75) + 20), (((tmp2.getYC() * 75) + 20)))) {
-                    if (checkWhiteOponent(((tmp2.getXC() * 75) + 20), (((tmp2.getYC() * 75) + 20)))) {
-                        moves.push(validM3);
+                vMove3 = new Move(initialSquare, tmpSquare2);
+                if (piecePresent(((tmpSquare2.getXC() * 75) + 20), (((tmpSquare2.getYC() * 75) + 20)))) {
+                    if (checkWhiteOponent(((tmpSquare2.getXC() * 75) + 20), (((tmpSquare2.getYC() * 75) + 20)))) {
+                        moves.push(vMove3);
                     }
                 }
             }
