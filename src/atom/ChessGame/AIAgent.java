@@ -44,7 +44,7 @@ public class AIAgent {
                     || (currentMove.getLanding().getXC() == 3) && (currentMove.getLanding().getYC() == 4)
                     || (currentMove.getLanding().getXC() == 4) && (currentMove.getLanding().getYC() == 4)) {
                 score = 1;
-                //update bestmove
+                //updating the best move
                 if (score > highestScore) {
                     highestScore = score;
                     bestMove = currentMove;
@@ -56,19 +56,19 @@ public class AIAgent {
                 score = 0;
                 blackPosition = (Square) blackStackM.pop();
                 if ((currentMove.getLanding().getXC() == blackPosition.getXC()) && (currentMove.getLanding().getYC() == blackPosition.getYC())) {
-                    //check piece score
 
-                    if(blackPosition.getName().equals("BlackPawn")){
-                        score = 2;
-                    }
-                    else if(blackPosition.getName().equals("BlackBishop")|| blackPosition.getName().equals("BlackKnight")){
-                        score = 3;
+                    //checking piece score
+                    if(blackPosition.getName().equals("BlackQueen")){
+                        score = 5;
                     }
                     else if(blackPosition.getName().equals("BlackRook")){
                         score = 4;
                     }
-                    else if(blackPosition.getName().equals("BlackQueen")){
-                        score = 5;
+                    else if(blackPosition.getName().equals("BlackBishop")|| blackPosition.getName().equals("BlackKnight")){
+                        score = 3;
+                    }
+                    else if(blackPosition.getName().equals("BlackPawn")){
+                        score = 2;
                     }
                     else{
                         score = 6;
