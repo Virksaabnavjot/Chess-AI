@@ -32,7 +32,7 @@ public class AIAgent {
         Square blackPosition;
         int highestScore = 0;
         bestMove = null;
-        int score = 0;
+        int pieceStrength = 0;
 
         while (!whiteStack.empty()) {
             whiteMove = (Move) whiteStack.pop();
@@ -40,40 +40,42 @@ public class AIAgent {
 
             //check if the centre of the board is occupied or not
             if ((currentMove.getStart().getYC() < currentMove.getLanding().getYC())
-                    && (currentMove.getLanding().getXC() == 3) && (currentMove.getLanding().getYC() == 3)
-                    || (currentMove.getLanding().getXC() == 4) && (currentMove.getLanding().getYC() == 3)
-                    || (currentMove.getLanding().getXC() == 3) && (currentMove.getLanding().getYC() == 4)
-                    || (currentMove.getLanding().getXC() == 4) && (currentMove.getLanding().getYC() == 4)) {
-                score = 1;
+            && (currentMove.getLanding().getXC() == 3) && (currentMove.getLanding().getYC() == 3)
+            || (currentMove.getLanding().getXC() == 4) && (currentMove.getLanding().getYC() == 3)
+            || (currentMove.getLanding().getXC() == 3) && (currentMove.getLanding().getYC() == 4)
+            || (currentMove.getLanding().getXC() == 4) && (currentMove.getLanding().getYC() == 4)) {
+
+              pieceStrength = 1;
+
                 //updating the best move
-                if (score > highestScore) {
-                    highestScore = score;
+                if (pieceStrength > highestScore) {
+                    highestScore = pieceStrength;
                     bestMove = currentMove;
                 }
             }
 
             //compare white landing positions to black positions, return capture if available or random if not.
             while (!blackStackM.isEmpty()) {
-                score = 0;
+                pieceStrength = 0;
                 blackPosition = (Square) blackStackM.pop();
                 if ((currentMove.getLanding().getXC() == blackPosition.getXC()) && (currentMove.getLanding().getYC() == blackPosition.getYC())) {
 
-                    //checking piece score
+                    //Assign strength to pieces
                     if (blackPosition.getName().equals("BlackQueen")) {
-                        score = 5;
+                        pieceStrength = 5;
                     } else if (blackPosition.getName().equals("BlackRook")) {
-                        score = 4;
+                        pieceStrength = 4;
                     } else if (blackPosition.getName().equals("BlackBishop") || blackPosition.getName().equals("BlackKnight")) {
-                        score = 3;
+                        pieceStrength = 3;
                     } else if (blackPosition.getName().equals("BlackPawn")) {
-                        score = 2;
+                        pieceStrength = 2;
                     } else {
-                        score = 6;
+                        pieceStrength = 6;
                     }
                 }
                 //updating the best move
-                if (score > highestScore) {
-                    highestScore = score;
+                if (pieceStrength > highestScore) {
+                    highestScore = pieceStrength;
                     bestMove = currentMove;
                 }
             }
