@@ -219,12 +219,12 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
     }
 
 
-    ///////////////////////////////////////////////////////////////////////////////////
-    /*Method to check if there is a BlackKing in the surrounding squares of a given Square.*/
-    //////////////////////////////////////////////////////////////////////////////////
 
-    /*The method should return true if there is no King in any of the squares surrounding
-    the square that was submitted to the method. The method checks the grid below:*/
+    ///////////////////////////////////////////////////////////////////////////////////
+    /*Method to check if there is a BlackKing in the surrounding squares of a given Square.
+    The method should return true if there is no King in any of the squares surrounding
+    the square that was submitted to the method*/
+    //////////////////////////////////////////////////////////////////////////////////
     private Boolean checkSurroundingSquares(Square s) {
         Boolean possible = false;
         int x = s.getXC() * 75;
@@ -236,8 +236,10 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
     }
 
 
+
     ///////////////////////////////////////////////////////////////////////////////////
-    /*Get King Squares*/
+    /*Get King Squares - method takes as an input any coordinates from a square and returns a stack of all the possible
+    valid moves that the WhiteKing can move to.*/
     /////////////////////////////////////////////////////////////////////////////////
 
     private Stack getKingSquares(int x, int y, String piece) {
@@ -344,6 +346,11 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
         return moves;
     }
 
+
+
+    ///////////////////////////////////////////////////////////////////////////////////
+    /*Method to return all the possible moves that a ####QUEEN### can make*/
+    //////////////////////////////////////////////////////////////////////////////////
     private Stack getQueenMoves(int x, int y, String piece) {
         Stack completeMoves = new Stack();
         Stack tmpMoves = new Stack();
@@ -362,18 +369,20 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
         return completeMoves;
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////
+    /*Method to return all the squares that a ####ROOK##### can move to, the
+    four possible directions that the Rook can move to:
+    1 - the x value is increasing
+    2 - the x value is decreasing
+    3 - the y value is increasing
+    4 - the y value is decreasing*/
+    //////////////////////////////////////////////////////////////////////////////////
 
     private Stack getRookMoves(int x, int y, String piece) {
         Square startingSquare = new Square(x, y, piece);
         Stack moves = new Stack();
         Move validM, validM2, validM3, validM4;
-        /*
-    There are four possible directions that the Rook can move to:
-      - the x value is increasing
-      - the x value is decreasing
-      - the y value is increasing
-      - the y value is decreasing
-         */
+
         for (int i = 1; i < 8; i++) {
             int tmpx = x + i;
             int tmpy = y;
@@ -441,6 +450,11 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
         return moves;
     }
 
+
+
+    ///////////////////////////////////////////////////////////////////////////////////
+    /*Method to return all the squares that a ####BISHOP##### can move to*/
+    //////////////////////////////////////////////////////////////////////////////////
     private Stack getBishopMoves(int x, int y, String piece) {
         Square startingSquare = new Square(x, y, piece);
         Stack moves = new Stack();
@@ -513,6 +527,11 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
         return moves;
     }
 
+
+
+    ///////////////////////////////////////////////////////////////////////////////////
+    /*Method to return all the squares that a ###KNIGHT### can move to*/
+    //////////////////////////////////////////////////////////////////////////////////
     private Stack getKnightMoves(int x, int y, String piece) {
         Square startingSquare = new Square(x, y, piece);
         Stack moves = new Stack();
@@ -552,6 +571,10 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
         return attackingMove;
     }
 
+
+    ///////////////////////////////////////////////////////////////////////////////////
+    /* This method help us color a stack of sqares on the board */
+    //////////////////////////////////////////////////////////////////////////////////
     private void colorSquares(Stack squares) {
         Border greenBorder = BorderFactory.createLineBorder(Color.GREEN, 3);
         while (!squares.empty()) {
@@ -562,6 +585,11 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
         }
     }
 
+
+
+    ///////////////////////////////////////////////////////////////////////////////////
+    /* This methos helps us to get the landing sqares of bunch of moves*/
+    //////////////////////////////////////////////////////////////////////////////////
     private void getLandingSquares(Stack found) {
         Move tmp;
         Square landing;
@@ -575,6 +603,10 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
     }
 
 
+
+    ///////////////////////////////////////////////////////////////////////////////////
+    /* This method helps us find all the white pieces*/
+    //////////////////////////////////////////////////////////////////////////////////
     private Stack findWhitePieces() {
         Stack squares = new Stack();
         String icon;
@@ -600,6 +632,11 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
         return squares;
     }
 
+
+
+    ///////////////////////////////////////////////////////////////////////////////////
+    /* This method helps us find all the black pieces */
+    //////////////////////////////////////////////////////////////////////////////////
     private Stack findBlackPieces() {
         Stack squares = new Stack();
         String icon;
@@ -625,7 +662,12 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
         return squares;
     }
 
-    //This method checks if there is a piece present on a particular square.
+
+
+    ///////////////////////////////////////////////////////////////////////////////////
+    /* This method helps us to chec if there is a piece preseant on a particular sqaure
+     on the board*/
+    //////////////////////////////////////////////////////////////////////////////////
     private Boolean piecePresent(int x, int y) {
         Component c = chessBoard.findComponentAt(x, y);
         if (c instanceof JPanel) {
@@ -635,7 +677,11 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
         }
     }
 
-    //This is a method to check if a piece is a Black piece.
+
+
+    ///////////////////////////////////////////////////////////////////////////////////
+    /* This method helps us to check if the piece is a black piece*/
+    //////////////////////////////////////////////////////////////////////////////////
     private Boolean checkWhiteOponent(int newX, int newY) {
         Boolean oponent;
         Component c1 = chessBoard.findComponentAt(newX, newY);
@@ -716,7 +762,6 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
 
         } else {
 
-//
             Stack testing = new Stack();
             while (!completeMoves.empty()) {
                 Move tmpMove = (Move) completeMoves.pop();
