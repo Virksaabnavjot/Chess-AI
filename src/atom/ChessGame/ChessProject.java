@@ -945,7 +945,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
                 layeredPane.repaint();
 
                 if (agentwins) {
-                    JOptionPane.showMessageDialog(null, "The AI Agent has won!");
+                    JOptionPane.showMessageDialog(null, "The White AI has won the game.Better luck next time.!");
                     System.exit(0);
                 }
 
@@ -1151,7 +1151,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
                                 if (checkWhiteOponent(e.getX(), e.getY())) {
                                     validMove = true;
                                     if (getPieceName(e.getX(), e.getY()).contains("King")) {
-                                        winner = "White Wins!";
+                                        winner = "Sorry, Better luck next time. The White AI has won the game!";
                                     }
                                 } else {
                                     validMove = false;
@@ -1159,7 +1159,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
                             } else if (checkBlackOponent(e.getX(), e.getY())) {
                                 validMove = true;
                                 if (getPieceName(e.getX(), e.getY()).contains("King")) {
-                                    winner = "Black Wins!";
+                                    winner = "The Black Player has won the game!";
                                 }
                             } else {
                                 validMove = false;
@@ -1251,7 +1251,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
                                  */
 
                                 if (getPieceName(e.getX(), e.getY()).contains("King")) {
-                                    winner = "White Wins!";
+                                    winner = "Sorry, Better luck next time. The White AI has won the game!";
                                 }
                             } else {
                                 validMove = false;
@@ -1259,7 +1259,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
                         } else if (checkBlackOponent(e.getX(), e.getY())) {
                             validMove = true;
                             if (getPieceName(e.getX(), e.getY()).contains("King")) {
-                                winner = "Black Wins!";
+                                winner = "The Black Player has won the game!";
                             }
                         } else {
                             validMove = false;
@@ -1285,13 +1285,13 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
                         if (checkWhiteOponent(e.getX(), e.getY())) {
                             validMove = true;
                             if (getPieceName(e.getX(), e.getY()).contains("King")) {
-                                winner = "White Wins!";
+                                winner = "Sorry, Better luck next time. The White AI has won the game!";
                             }
                         }
                     } else if (checkBlackOponent(e.getX(), e.getY())) {
                         validMove = true;
                         if (getPieceName(e.getX(), e.getY()).contains("King")) {
-                            winner = "Black Wins!";
+                            winner = "The Black Player has won the game!";
                         }
                     }
                 }
@@ -1370,7 +1370,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
                             if (checkWhiteOponent(e.getX(), e.getY())) {
                                 validMove = true;
                                 if (getPieceName(e.getX(), e.getY()).contains("King")) {
-                                    winner = "White Wins!";
+                                    winner = "Sorry, Better luck next time. The White AI has won the game!";
                                 }
                             }
                         } else // We are moving the Black Queen...
@@ -1378,7 +1378,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
                             if (checkBlackOponent(e.getX(), e.getY())) {
                                 validMove = true;
                                 if (getPieceName(e.getX(), e.getY()).contains("King")) {
-                                    winner = "Black Wins!";
+                                    winner = "The Black Player has won the game!";
                                 }
                             }
                         }
@@ -1449,13 +1449,13 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
                             if (checkWhiteOponent(e.getX(), e.getY())) {
                                 validMove = true;
                                 if (getPieceName(e.getX(), e.getY()).contains("King")) {
-                                    winner = "White Wins!";
+                                    winner = "Sorry, Better luck next time. The White AI has won the game!";
                                 }
                             }
                         } else if (checkBlackOponent(e.getX(), e.getY())) {
                             validMove = true;
                             if (getPieceName(e.getX(), e.getY()).contains("King")) {
-                                winner = "Black Wins!";
+                                winner = "The Black Player has won the game!";
                             }
                         }
                     } else {
@@ -1483,7 +1483,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
                             if (checkBlackOponent(e.getX(), e.getY())) {
                                 validMove = true;
                                 if (getPieceName(e.getX(), e.getY()).contains("King")) {
-                                    winner = "Black Wins!";
+                                    winner = "The Black Player has won the game!";
                                 }
                             }
                         }
@@ -1509,7 +1509,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
                                     progression = true;
                                 }
                                 if (getPieceName(e.getX(), e.getY()).contains("King")) {
-                                    winner = "Black Wins!";
+                                    winner = "The Black Player has won the game!";
                                 }
                             }
                         }
@@ -1540,7 +1540,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
                                 success = true;
                             }
                             if (getPieceName(e.getX(), e.getY()).contains("King")) {
-                                winner = "White Wins!";
+                                winner = "Sorry, Better luck next time. The White AI has won the game!";
                             }
                         }
                     }
@@ -1553,7 +1553,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
                                 success = true;
                             }
                             if (getPieceName(e.getX(), e.getY()).contains("King")) {
-                                winner = "White Wins!";
+                                winner = "Sorry, Better luck next time. The White AI has won the game!";
                             }
                         }
                     }// checking the case for when there is a piecePresent

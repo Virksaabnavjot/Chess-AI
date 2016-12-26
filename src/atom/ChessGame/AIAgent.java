@@ -9,11 +9,8 @@ public class AIAgent {
         rand = new Random();
     }
 
-    /*
-  The method randomMove takes as input a stack of potential moves that the AI agent
-  can make. The agent uses a rondom number generator to randomly select a move from
-  the inputted Stack and returns this to the calling agent.
-     */
+////////////////////////////////////////////////////////////////////////////////////////////////
+/* Random Move */
     public Move randomMove(Stack possibilities) {
 
         int moveID = rand.nextInt(possibilities.size());
@@ -25,134 +22,146 @@ public class AIAgent {
         return selectedMove;
     }
 
-    public Move nextBestMove(Stack whiteStack, Stack blackStack) {
-        Stack backupMove = (Stack) whiteStack.clone();
-        Stack blackStackM = (Stack) blackStack.clone();
-        Move whiteMove, currentMove, bestMove;
-        Square blackPosition;
-        int highestScore = 0;
-        bestMove = null;
-        int pieceStrength = 0;
+///////////////////////////////////////////////////////////////////////////////////////////////
+/* Best Move */
 
-        while (!whiteStack.empty()) {
-            whiteMove = (Move) whiteStack.pop();
-            currentMove = whiteMove;
+    public Move nextBestMove(Stack whitePossibilitiesStack, Stack blackPossibilitiesStack) {
+        Stack backupMove = (Stack) whitePossibilitiesStack.clone();
+        Stack blackStackM = (Stack) blackPossibilitiesStack.clone();
+        Move bestMove = null;
+        Move whiteMove;
+        Move presentMove;
+        Square blackPosition;
+        int strength = 0;
+        int chosenPieceStrength = 0;
+
+        while (!whitePossibilitiesStack.empty()) {
+            whiteMove = (Move) whitePossibilitiesStack.pop();
+            presentMove = whiteMove;
 
             //check if the centre of the board is occupied or not
-            if ((currentMove.getStart().getYC() < currentMove.getLanding().getYC())
-            && (currentMove.getLanding().getXC() == 3) && (currentMove.getLanding().getYC() == 3)
-            || (currentMove.getLanding().getXC() == 4) && (currentMove.getLanding().getYC() == 3)
-            || (currentMove.getLanding().getXC() == 3) && (currentMove.getLanding().getYC() == 4)
-            || (currentMove.getLanding().getXC() == 4) && (currentMove.getLanding().getYC() == 4)) {
+            if ((presentMove.getStart().getYC() < presentMove.getLanding().getYC())
+            && (presentMove.getLanding().getXC() == 3) && (presentMove.getLanding().getYC() == 3)
+            || (presentMove.getLanding().getXC() == 4) && (presentMove.getLanding().getYC() == 3)
+            || (presentMove.getLanding().getXC() == 3) && (presentMove.getLanding().getYC() == 4)
+            || (presentMove.getLanding().getXC() == 4) && (presentMove.getLanding().getYC() == 4)) {
 
-              pieceStrength = 1;
+              strength = 1;
 
                 //updating the best move
-                if (pieceStrength > highestScore) {
-                    highestScore = pieceStrength;
-                    bestMove = currentMove;
+                if (strength > chosenPieceStrength) {
+                    chosenPieceStrength = strength;
+                    bestMove = presentMove;
                 }
             }
 
             //compare white landing positions to black positions, return capture if available or random if not.
             while (!blackStackM.isEmpty()) {
-                pieceStrength = 0;
+                strength = 0;
                 blackPosition = (Square) blackStackM.pop();
-                if ((currentMove.getLanding().getXC() == blackPosition.getXC()) && (currentMove.getLanding().getYC() == blackPosition.getYC())) {
+                if ((presentMove.getLanding().getXC() == blackPosition.getXC()) && (presentMove.getLanding().getYC() == blackPosition.getYC())) {
 
                     //Assign strength to pieces
                     if (blackPosition.getName().equals("BlackQueen")) {
-                        pieceStrength = 5;
+                        strength = 5;
                     } else if (blackPosition.getName().equals("BlackRook")) {
-                        pieceStrength = 4;
+                        strength = 4;
                     } else if (blackPosition.getName().equals("BlackBishop") || blackPosition.getName().equals("BlackKnight")) {
-                        pieceStrength = 3;
+                        strength = 3;
                     } else if (blackPosition.getName().equals("BlackPawn")) {
-                        pieceStrength = 2;
+                        strength = 2;
                     } else {
-                        pieceStrength = 6;
+                        strength = 6;
                     }
                 }
                 //updating the best move
-                if (pieceStrength > highestScore) {
-                    highestScore = pieceStrength;
-                    bestMove = currentMove;
+                if (strength > chosenPieceStrength) {
+                    chosenPieceStrength = strength;
+                    bestMove = presentMove;
                 }
             }
             //reloading the black squares
-            blackStackM = (Stack) blackStack.clone();
+            blackStackM = (Stack) blackPossibilitiesStack.clone();
         }
+
         // Make the best move if not available make a random move.
-        if (highestScore > 0) {
-            System.out.println("selected AI Agent: Next best move");
+        if (chosenPieceStrength > 0) {
+            System.out.println("Selected AI Agent - Next best move: " +chosenPieceStrength);
             return bestMove;
         }
+
         return randomMove(backupMove);
 
     }
 
-    public Move twoLevelsDeep(Stack whitePossibilities, Stack blackPossibilities) {
-        Stack backup = (Stack) whitePossibilities.clone();
-        Stack black = (Stack) blackPossibilities.clone();
-        Move whiteMove, standardMove, attackMove;
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+/* Two Level Deep */
+
+    public Move twoLevelsDeep(Stack whitePossibilitiesStack, Stack blackPossibilitiesStack) {
+        Stack backupMove = (Stack) whitePossibilitiesStack.clone();
+        Stack blackStackM = (Stack) blackPossibilitiesStack.clone();
+        Move bestMove = null;
+        Move whiteMove;
+        Move presentMove;
         Square blackPosition;
-        int Point = 0;
-        int chosenPiece = 0;
-        attackMove = null;
+        int strength = 0;
+        int chosenPieceStrength = 0;
 
-        while (!whitePossibilities.empty()) {
-            whiteMove = (Move) whitePossibilities.pop();
-            standardMove = whiteMove;
+        while (!whitePossibilitiesStack.empty()) {
+            whiteMove = (Move) whitePossibilitiesStack.pop();
+            presentMove = whiteMove;
 
-            //assign 1 point to centre position on board
-            if ((standardMove.getStart().getYC() < standardMove.getLanding().getYC())
-                    && (standardMove.getLanding().getXC() == 3) && (standardMove.getLanding().getYC() == 3)
-                    || (standardMove.getLanding().getXC() == 4) && (standardMove.getLanding().getYC() == 3)
-                    || (standardMove.getLanding().getXC() == 3) && (standardMove.getLanding().getYC() == 4)
-                    || (standardMove.getLanding().getXC() == 4) && (standardMove.getLanding().getYC() == 4)) {
-                Point = 0;
+            //assign 1 strength to centre position on board
+            if ((presentMove.getStart().getYC() < presentMove.getLanding().getYC())
+                    && (presentMove.getLanding().getXC() == 3) && (presentMove.getLanding().getYC() == 3)
+                    || (presentMove.getLanding().getXC() == 4) && (presentMove.getLanding().getYC() == 3)
+                    || (presentMove.getLanding().getXC() == 3) && (presentMove.getLanding().getYC() == 4)
+                    || (presentMove.getLanding().getXC() == 4) && (presentMove.getLanding().getYC() == 4)) {
+                strength = 0;
                 //assign best move
-                if (Point > chosenPiece) {
-                    chosenPiece = Point;
-                    attackMove = standardMove;
+                if (strength > chosenPieceStrength) {
+                    chosenPieceStrength = strength;
+                    bestMove = presentMove;
                 }
             }
 
-            //return an attacking move if piece has higher point value than centre position
-            //Note: I have assigned the BlackPawn 2 points which is unconventional so as to have the centre poisition take priority
-            //Over a random move
-            while (!black.isEmpty()) {
-                Point = 0;
-                blackPosition = (Square) black.pop();
-                if ((standardMove.getLanding().getXC() == blackPosition.getXC()) && (standardMove.getLanding().getYC() == blackPosition.getYC())) {
-                    //Check for black pawn and assign points
-                    if (blackPosition.getName().equals("BlackPawn")) {
-                        Point = 2;
-                    } //Check for black bishop/knight and assign points
-                    else if (blackPosition.getName().equals("BlackBishop") || blackPosition.getName().equals("BlackKnight")) {
-                        Point = 3;
-                    } //Check for black rook and assign points
-                    else if (blackPosition.getName().equals("BlackRook")) {
-                        Point = 5;
-                    } //Check for black queen and assign points
-                    else if (blackPosition.getName().equals("BlackQueen")) {
-                        Point = 9;
-                    }
+            //return a attacking best move when piece has higher strength than centre position
+            while (!blackStackM.isEmpty()) {
+                strength = 0;
+                blackPosition = (Square) blackStackM.pop();
+                if ((presentMove.getLanding().getXC() == blackPosition.getXC()) && (presentMove.getLanding().getYC() == blackPosition.getYC())) {
+
+                  //Assign strength to pieces
+                  if (blackPosition.getName().equals("BlackQueen")) {
+                      strength = 5;
+                  } else if (blackPosition.getName().equals("BlackRook")) {
+                      strength = 4;
+                  } else if (blackPosition.getName().equals("BlackBishop") || blackPosition.getName().equals("BlackKnight")) {
+                      strength = 3;
+                  } else if (blackPosition.getName().equals("BlackPawn")) {
+                      strength = 2;
+                  } else {
+                      strength = 6;
+                  }
                 }
-                //update bestmove
-                if (Point > chosenPiece) {
-                    chosenPiece = Point;
-                    attackMove = standardMove;
+
+                //updating the bestmove
+                if (strength > chosenPieceStrength) {
+                    chosenPieceStrength = strength;
+                    bestMove = presentMove;
                 }
             }
-            //reload black squares
-            black = (Stack) blackPossibilities.clone();
+
+            //reloading the black squares
+            blackStackM = (Stack) blackPossibilitiesStack.clone();
         }
-        // use best move if available or just go random
-        if (chosenPiece > 0) {
-            System.out.println("Two step best move selected by AI agent:" + chosenPiece);
-            return attackMove;
+
+        //Make the best move if not available make a random move.
+        if (chosenPieceStrength > 0) {
+            System.out.println("Selected AI Agent - Two Level Deep: " +chosenPieceStrength);
+            return bestMove;
         }
-        return randomMove(backup);
+        return randomMove(backupMove);
     }
 }
