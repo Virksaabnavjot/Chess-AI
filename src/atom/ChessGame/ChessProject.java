@@ -15,10 +15,8 @@ import javax.swing.JFrame;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 
-/*
-	This class can be used as a starting point for creating your Chess game project. The only piece that
-	has been coded is a white pawn...a lot done, more to do!
- */
+/* This is the Main Class from where the project runs */
+
 public class ChessProject extends JFrame implements MouseListener, MouseMotionListener {
 
     JLayeredPane layeredPane;
@@ -39,6 +37,10 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
     AIAgent agent;
     Boolean agentwins;
     Stack temporary;
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /* Constructor - Designing the GUI for Chess Game */
+    ///////////////////////////////////////////////////////////////////////////////////////////////
 
     public ChessProject() {
         Dimension boardSize = new Dimension(600, 600);
@@ -75,6 +77,11 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
             panels = (JPanel) chessBoard.getComponent(i);
             panels.add(pieces);
         }
+
+        ///////////////////////////////////////////////////////////////////////////////////
+        /*Assinging Labels to the chess pieces*/
+        //////////////////////////////////////////////////////////////////////////////////
+
         pieces = new JLabel(new ImageIcon("WhiteRook.png"));
         panels = (JPanel) chessBoard.getComponent(0);
         panels.add(pieces);
@@ -135,13 +142,16 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
         temporary = new Stack();
     }
 
-    /*
-  Method to check were a White Pawn can move to. There are two main conditions here. Either the White Pawn is in
-  its starting position in which case it can move either one or two squares or it has already moved and the it can only
-  one square down the board. The Pawn can also take an opponent piece in a diagonal movement. and if it makes it to the
-  bottom of the board it turns into a Queen (this should be handled where the move is actually being made and not in this
-  method).
-     */
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /*Method to check were a White Pawn can move to. There are two main conditions here.Either the White Pawn is in
+    its starting position in which case it can move either one or two squares or it has already moved and the it can only
+    one square down the board. The Pawn can also take an opponent piece in a diagonal movement. and if it makes it to the
+    bottom of the board it turns into a Queen (this should be handled where the move is actually being made and not in this
+    method)*/
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+
     private Stack getWhitePawnSquares(int x, int y, String piece) {
         Stack moves = new Stack();
         Square initialSquare = new Square(x, y, piece);
@@ -210,8 +220,22 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
         return moves;
     }
 
+
+    ///////////////////////////////////////////////////////////////////////////////////
+    /*Method to check if there is a BlackKing in the surrounding squares of a given Square.*/
+    //////////////////////////////////////////////////////////////////////////////////
+
+    private Boolean checkSurroundingSquares(Square s) {
+        Boolean possible = false;
+        int x = s.getXC() * 75;
+        int y = s.getYC() * 75;
+        if (!((getPieceName((x + 75), y).contains("BlackKing")) || (getPieceName((x - 75), y).contains("BlackKing")) || (getPieceName(x, (y + 75)).contains("BlackKing")) || (getPieceName((x), (y - 75)).contains("BlackKing")) || (getPieceName((x + 75), (y + 75)).contains("BlackKing")) || (getPieceName((x - 75), (y + 75)).contains("BlackKing")) || (getPieceName((x + 75), (y - 75)).contains("BlackKing")) || (getPieceName((x - 75), (y - 75)).contains("BlackKing")))) {
+            possible = true;
+        }
+        return possible;
+    }
     /*
-  Method to check if there is a BlackKing in the surrounding squares of a given Square.
+
   The method should return true if there is no King in any of the squares surrounding
   the square that was submitted to the method. The method checks the grid below:
 
@@ -230,15 +254,12 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
 
 
      */
-    private Boolean checkSurroundingSquares(Square s) {
-        Boolean possible = false;
-        int x = s.getXC() * 75;
-        int y = s.getYC() * 75;
-        if (!((getPieceName((x + 75), y).contains("BlackKing")) || (getPieceName((x - 75), y).contains("BlackKing")) || (getPieceName(x, (y + 75)).contains("BlackKing")) || (getPieceName((x), (y - 75)).contains("BlackKing")) || (getPieceName((x + 75), (y + 75)).contains("BlackKing")) || (getPieceName((x - 75), (y + 75)).contains("BlackKing")) || (getPieceName((x + 75), (y - 75)).contains("BlackKing")) || (getPieceName((x - 75), (y - 75)).contains("BlackKing")))) {
-            possible = true;
-        }
-        return possible;
-    }
+
+     ///////////////////////////////////////////////////////////////////////////////////
+     /////////////////////////////////THE END//////////////////////////////////////////
+     /*Method to check if BlackKing is in the Surrounding Squares */
+     //////////////////////////////////////////////////////////////////////////////////
+     /////////////////////////////////////////////////////////////////////////////////
 
     /*
   The getKingSquares method takes as an input any coordinates from a square and returns a stack of all the possible
