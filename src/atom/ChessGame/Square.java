@@ -19,14 +19,17 @@ class Square{
     pieceName = "";
   }
 
+  // Returns x coordinate
   public int getXC(){
     return xCoor;
   }
 
+  // Returns y coordinate
   public int getYC(){
     return yCoor;
   }
 
+  // Returns piece name
   public String getName(){
       return pieceName;
   }
