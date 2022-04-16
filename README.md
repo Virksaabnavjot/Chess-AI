@@ -158,7 +158,7 @@ Actual Gameplay Images(Me against the computer)
 
 
 
-
+Copyrights - Navjot Singh Virk (https://navjot.mrvirk.com & https://mrvirk.com)
 
 
 
